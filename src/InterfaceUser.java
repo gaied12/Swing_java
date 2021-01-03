@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 
 public class InterfaceUser extends JFrame implements ActionListener {
     private JLabel Lab1;
-    private Button b1,b2,b3,b4,bVerf,bHome;
+    private JButton b1,b2,b3,b4,bVerf,bHome;
     private JLabel l,l1;
     private JPanel pAdd,pDel,pVer,pUpd,panel,panel1;
     private JTextField idVerf,txNom,txPrenom,txNum;
@@ -29,11 +29,11 @@ public class InterfaceUser extends JFrame implements ActionListener {
         Lab1.setText("<html><h3><center>Interface passion </center></h3></html>");
         p1.add(Lab1);
         JPanel p2=new JPanel(new GridLayout(4,1));
-        b1=new Button("Consulter l'etat d'un rendez-vous ");
+        b1=new JButton("Consulter l'etat d'un rendez-vous ");
         b1.addActionListener(this);
-        b2=new Button(" Modifier un rendez-vous");
-        b3=new Button("Prendre un rendez-vous");
-        b4=new Button("Annuler un redez-vous");
+        b2=new JButton(" Modifier un rendez-vous");
+        b3=new JButton("Prendre un rendez-vous");
+        b4=new JButton("Annuler un redez-vous");
         b4.addActionListener(this);
 
          b3.addActionListener(this);
@@ -119,8 +119,8 @@ public class InterfaceUser extends JFrame implements ActionListener {
         panel.add(label);
         panel.add(idVerf);
          panel1=new JPanel(new FlowLayout(FlowLayout.CENTER));
-       bVerf=new Button("vérifier");
-       bHome=new Button("Annuler");
+       bVerf=new JButton("vérifier");
+       bHome=new JButton("Annuler");
        panel1.add(bVerf);
        panel1.add(bHome);
        pVer=new JPanel(new GridLayout(4,2));
@@ -140,19 +140,17 @@ public class InterfaceUser extends JFrame implements ActionListener {
 
 
     }
-    public void UpdRen(){
-
-    }
 
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
 
         if (actionEvent.getSource().equals(b1)){
-            verRen();
+            new State() ;
 
         }
         if (actionEvent.getSource().equals(b2)){
+            new Update();
 
         }
         if (actionEvent.getSource().equals(b3)){

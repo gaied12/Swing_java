@@ -86,24 +86,37 @@ p3.add(aR);
         this.add(p3);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setVisible(true);
-        this.setSize(500, 350);
+        this.setSize(600, 400);
 
 
 
 
     }
     private void aff() throws SQLException {
+        ConData conData=new ConData();
+
+
+
         JWindow jWindow=new JWindow(this);
         dlm=new DefaultListModel();
         lR=new JList(dlm);
-        ConData conData=new ConData();
         String req= " SELECT `id`, `nom`, `prenom`, `time`,  `phoneNumber` FROM `rendz-vous` WHERE `date`=? AND `confirmed`=?";
         PreparedStatement preparedStatement=ConData.getCon().prepareStatement(req);
         preparedStatement.setObject(1,Dtxt.getText());
         preparedStatement.setObject(2,false);
         ResultSet resultSet=preparedStatement.executeQuery();
+        resultSet.last();
+        int count = resultSet.getRow();
+        resultSet.beforeFirst();
+        if (count==0){
+            ImageIcon icon = new ImageIcon("/home/oussamagaied/Téléchargements/error-in-card.png");
+            JOptionPane.showMessageDialog(this, "Aucun rendez-vous dans le date de  "+Dtxt.getText(), "Erreur ",
+                    JOptionPane.ERROR_MESSAGE, icon);
+        }
 
-            while (resultSet.next()) {
+
+
+        while (resultSet.next()) {
                 Rendez_vous rendez_vous = new Rendez_vous();
                 rendez_vous.setId(resultSet.getInt(1));
                 rendez_vous.setNom(resultSet.getString(2));
@@ -174,8 +187,6 @@ p3.add(aR);
         if (actionEvent.getSource().equals(aD)) {
             wDate.dispose();
             Dtxt.setText(null);
-
-
 
 
 

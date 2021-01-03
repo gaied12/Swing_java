@@ -10,7 +10,7 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class InterfaceAdmin extends JFrame implements ActionListener {
-    Button bF,bR;
+    JButton bF,bR;
 
 
 
@@ -35,10 +35,10 @@ public class InterfaceAdmin extends JFrame implements ActionListener {
         JLabel img = new JLabel();
         img.setIcon(icon);
         JPanel p1=new JPanel(new GridLayout(2,1));
-        bF=new Button("filtrer les rendez vous");
+        bF=new JButton("filtrer les rendez vous");
         bF.addActionListener(this);
 
-        bR=new Button("Liste Finale des rendez vous ");
+        bR=new JButton("Liste Finale des rendez vous ");
         bR.addActionListener(this);
         p.add(Lab1);
         p1.add(bF);
@@ -58,6 +58,9 @@ public class InterfaceAdmin extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent actionEvent) {
         if (actionEvent.getSource().equals(bF)){
             new Filter();
+        }
+        if (actionEvent.getSource().equals(bR)){
+            new FinaleR();
         }
 
     }

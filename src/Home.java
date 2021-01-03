@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Home extends JFrame implements ActionListener {
-    Button bD,bP;
+    JButton bD,bP;
     public Home(){
         init();
     }
@@ -20,10 +20,10 @@ public class Home extends JFrame implements ActionListener {
         img.setIcon(icon);
         p2.add(img);
         JPanel p3 = new JPanel();
-        p3.setLayout(new GridLayout(1, 2));
-        bD=new Button("Espace Docteur");
+        p3.setLayout(new FlowLayout(FlowLayout.CENTER));
+        bD=new JButton("Espace Docteur");
         bD.addActionListener(this);
-        bP=new Button("Espace Passion");
+        bP=new JButton("Espace Passion");
         bP.addActionListener(this);
         p3.add(bD);
         p3.add(bP);
